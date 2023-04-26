@@ -142,7 +142,7 @@ def fetch_controlnet_models():
    }
 
     controlnet_models = []
-    response = requests.get(url=f'{url}/controlnet/model_list')
+    response = requests.get(url=f'{url}/controlnet/model_list',proxies=proxies)
     if response.status_code == 200:
         r = response.json()
         for model in r.get('model_list', []):  # type: str
@@ -450,7 +450,7 @@ def progress_request():
         'https': 'socks5://localhost:1234',
     }
 
-    response = requests.get(url=f'{url}/sdapi/v1/progress')
+    response = requests.get(url=f'{url}/sdapi/v1/progress',proxies=proxies)
     if response.status_code == 200:
         r = response.json()
         return r
