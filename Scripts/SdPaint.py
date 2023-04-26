@@ -136,10 +136,10 @@ def fetch_controlnet_models():
     :return: The ControlNet models.
     """
     global controlnet_models
-	proxies = {
-		'http': 'socks5://localhost:1234',
-		'https': 'socks5://localhost:1234',
-	}
+    proxies = {
+        'http': 'socks5://localhost:1234',
+        'https': 'socks5://localhost:1234',
+   }
 
     controlnet_models = []
     response = requests.get(url=f'{url}/controlnet/model_list',proxies=proxies)
@@ -418,10 +418,10 @@ def img2img_submit(force=False):
         t = threading.Thread(target=progress_bar)
         t.start()
 
-	proxies = {
-		'http': 'socks5://localhost:1234',
-		'https': 'socks5://localhost:1234',
-	}
+        proxies = {
+            'http': 'socks5://localhost:1234',
+            'https': 'socks5://localhost:1234',
+        }
 
         response = requests.post(url=f'{url}/sdapi/v1/img2img', json=json_data, proxies=proxies)
         if response.status_code == 200:
@@ -445,10 +445,10 @@ def progress_request():
 
     :return: The API JSON response.
     """
-	proxies = {
-		'http': 'socks5://localhost:1234',
-		'https': 'socks5://localhost:1234',
-	}
+    proxies = {
+        'http': 'socks5://localhost:1234',
+        'https': 'socks5://localhost:1234',
+    }
 
     response = requests.get(url=f'{url}/sdapi/v1/progress', proxies=proxies)
     if response.status_code == 200:
@@ -632,10 +632,10 @@ def send_request():
         Use ``main_json_data`` variable.
     """
 
-	proxies = {
-		'http': 'socks5://localhost:1234',
-		'https': 'socks5://localhost:1234',
-	}
+    proxies = {
+        'http': 'socks5://localhost:1234',
+        'https': 'socks5://localhost:1234',
+    }
     global server_busy
     response = requests.post(url=f'{url}/sdapi/v1/{"img2img" if img2img else "txt2img"}', json=controlnet_to_sdapi(main_json_data), proxies=proxies)
     if response.status_code == 200:
@@ -757,10 +757,10 @@ def controlnet_detect():
         "controlnet_threshold_b": 64
     }
 
-	proxies = {
-		'http': 'socks5://localhost:1234',
-		'https': 'socks5://localhost:1234',
-	}
+    proxies = {
+    'http': 'socks5://localhost:1234',
+    'https': 'socks5://localhost:1234',
+    }
     response = requests.post(url=f'{url}/controlnet/detect', json=json_data, proxies=proxies)
     if response.status_code == 200:
         r = response.json()
